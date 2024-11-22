@@ -1,0 +1,36 @@
+
+.hero-section {
+  background: url('../../../../assets/banner.jpg') center/cover no-repeat;
+  color: hsl(57, 82%, 66%);
+  padding: 5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+h1 {
+
+
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.nav-tabs {
+  justify-content: center;
+}
+
+.tab-content {
+  min-height: 200px;
+}
+
+.tab-pane {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-top: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+}

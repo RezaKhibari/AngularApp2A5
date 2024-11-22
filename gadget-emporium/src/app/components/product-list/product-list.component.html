@@ -1,0 +1,36 @@
+<!-- <div *ngIf="products.length > 0; else noProducts">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.category }}</p>
+          <p class="card-text text-muted">${{ product.price }}</p>
+          <button class="btn btn-primary">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noProducts>
+  <p>No products available in this category.</p>
+</ng-template>
+ -->
+ <div *ngIf="loading">Loading products...</div>
+ <div *ngIf="!loading && products.length > 0; else noProducts">
+   <div class="row">
+     <div class="col-md-4" *ngFor="let product of products">
+       <div class="card mb-3">
+         <div class="card-body">
+           <h5 class="card-title">{{ product.name }}</h5>
+           <p class="card-text">Category: {{ product.category }}</p>
+           <p class="card-text">Price: ${{ product.price }}</p>
+           <button class="btn btn-primary">Add to Cart</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <ng-template #noProducts>
+   <p>No products available in this category.</p>
+ </ng-template>
