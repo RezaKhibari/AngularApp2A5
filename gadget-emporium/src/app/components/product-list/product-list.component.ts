@@ -1,35 +1,6 @@
-/* import { Component, Input, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-
-@Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
-})
-export class ProductListComponent implements OnInit {
-  @Input() category: string | null = null; // Accept category as input
-  products: any[] = [];
-
-  constructor(private productService: ProductService) {}
-
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: (data) => {
-        if (this.category) {
-          this.products = data.filter((p) => p.category === this.category);
-        } else {
-          this.products = data;
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching products:', err);
-      },
-    });
-  }
-}
- */
 import { Component, Input, OnChanges } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -41,7 +12,7 @@ export class ProductListComponent implements OnChanges {
   products: any[] = [];
   loading = true;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnChanges(): void {
     this.fetchProducts();
@@ -69,6 +40,29 @@ export class ProductListComponent implements OnChanges {
         error: (err) => {
           console.error('Error fetching products:', err);
           this.loading = false;
+        },
+      });
+    }
+  }
+
+  editProduct(product: any): void {
+    this.router.navigate(['/edit-product', product.id]);
+  }
+
+  deleteProduct(productId: number): void {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.productService.deleteProduct(productId).subscribe({
+        next: (response) => {
+          if (response.success) {
+            alert('Product deleted successfully.');
+            this.fetchProducts(); // Refresh the product list
+          } else {
+            alert('Failed to delete the product.');
+          }
+        },
+        error: (err) => {
+          console.error('Error deleting product:', err);
+          alert('An error occurred while deleting the product.');
         },
       });
     }
