@@ -1,6 +1,6 @@
 
 .hero-section {
-  background: url('../../../../assets/banner.jpg') center/cover no-repeat;
+  background: url('../../../assets/banner.jpg') center/cover no-repeat;
   color: hsl(57, 82%, 66%);
   padding: 5rem 2rem;
   border-radius: 8px;

@@ -13,8 +13,17 @@
       <label for="price" class="form-label">Price</label>
       <input type="number" id="price" [(ngModel)]="product.price" name="price" class="form-control" required />
     </div>
-    
-    <div class="d-flex justify-content-between">
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input
+        type="text"
+        id="image"
+        [(ngModel)]="product.imag"
+        name="image"
+        class="form-control"
+        required
+      />
+    </div>    <div class="d-flex justify-content-between">
       <button type="submit" class="btn btn-primary">Add Product</button>
       <a routerLink="/home" class="btn btn-secondary">Return to Home</a>
     </div>

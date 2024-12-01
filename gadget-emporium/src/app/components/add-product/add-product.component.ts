@@ -11,6 +11,7 @@ export class AddProductComponent {
     name: '',
     category: '',
     price: null,
+    imag: '',
   };
 
   constructor(private productService: ProductService) {}
@@ -20,7 +21,7 @@ export class AddProductComponent {
       this.productService.addProduct(this.product).subscribe({
         next: (response) => {
           alert(response.message || 'Product added successfully!');
-          this.product = { name: '', category: '', price: null }; // Reset the form
+          this.product = { name: '', category: '', price: null, imag: '' }; // Reset the form
         },
         error: (err) => {
           console.error(err);
